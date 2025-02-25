@@ -3,15 +3,9 @@
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Menu, X } from "lucide-react"
+import { X } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-
-interface HeaderModalProps {
-  title: string
-  content: React.ReactNode
-}
 
 function NavButton({ title }: { title: string }) {
   const [isMounted, setIsMounted] = useState(false)
@@ -59,7 +53,6 @@ function NavButton({ title }: { title: string }) {
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [scrollProgress, setScrollProgress] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {

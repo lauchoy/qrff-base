@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { useState, useEffect, Suspense, useRef } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { ArrowRight } from "lucide-react"
 import dynamic from "next/dynamic"
 
@@ -14,54 +14,24 @@ import { Counter } from "@/components/ui/counter"
 const Footer = dynamic(() => import("@/components/ui/footer").then(mod => mod.Footer), {
   ssr: false
 })
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { Header } from "@/components/ui/header"
 
 export default function Page() {
-  const [activeAccordion, setActiveAccordion] = useState<string | null>(null)
-  const [activeCard, setActiveCard] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
-
-  const cards = [
-    {
-      title: "Rapid Response",
-      description: "Mobilizing within hours to provide immediate food relief in crisis situations.",
-      icon: <svg className="w-12 h-12 text-primary-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    },
-    {
-      title: "Chef-Led Quality",
-      description: "Professional chefs ensuring every meal is nutritious and delicious.",
-      icon: <svg className="w-12 h-12 text-primary-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M12 4a4 4 0 014 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0 014-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4z" />
-      </svg>
-    },
-    {
-      title: "Community Impact",
-      description: "Partnering with local organizations to maximize our reach and impact.",
-      icon: <svg className="w-12 h-12 text-primary-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-      </svg>
-    }
-  ]
 
   useEffect(() => {
     if (!isAnimating) {
       const timer = setInterval(() => {
         setIsAnimating(true)
         setTimeout(() => {
-          setActiveCard((prev) => (prev + 1) % cards.length)
           setIsAnimating(false)
         }, 500)
       }, 5000)
       return () => clearInterval(timer)
     }
-  }, [isAnimating, cards.length])
+  }, [isAnimating])
 
   return (
     <div className="min-h-screen bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark relative">
@@ -153,10 +123,10 @@ export default function Page() {
                       </AccordionTrigger>
                       <AccordionContent className="pt-6 space-y-6">
                         <p className="text-lg md:text-xl text-text-light dark:text-text-dark">
-                          Through strategic partnerships with local restaurants and food suppliers, we've built a network capable of responding to emergencies within hours. Our team of professional chefs ensures every meal meets the highest standards of quality and nutrition.
+                          Through strategic partnerships with local restaurants and food suppliers, we&apos;ve built a network capable of responding to emergencies within hours. Our team of professional chefs ensures every meal meets the highest standards of quality and nutrition.
                         </p>
                         <p className="text-lg md:text-xl text-text-light dark:text-text-dark">
-                          Whether it's a natural disaster, community crisis, or ongoing food insecurity, QRFF stands ready to deliver chef-prepared meals where they're needed most in Los Angeles.
+                          Whether it&apos;s a natural disaster, community crisis, or ongoing food insecurity, QRFF stands ready to deliver chef-prepared meals where they&apos;re needed most in Los Angeles.
                         </p>
                       </AccordionContent>
                     </AccordionItem>
@@ -337,106 +307,6 @@ export default function Page() {
           <ArrowRight className="w-12 h-12 transform rotate-90 text-white" strokeWidth={1.5} />
         </button>
       </div>
-    </div>
-  )
-}
-
-interface KeyDataItemProps {
-  icon: string
-  text: string
-}
-
-function KeyDataItem({ icon, text }: KeyDataItemProps) {
-  return (
-    <Card className="flex items-center space-x-4 bg-background-light dark:bg-background-dark border-primary-light/20 dark:border-primary-dark/20">
-      <CardContent className="flex items-center space-x-4 py-4">
-        <span className="text-4xl">{icon}</span>
-        <p className="text-lg text-text-light dark:text-text-dark">{text}</p>
-      </CardContent>
-    </Card>
-  )
-}
-
-function VolunteerContent() {
-  return (
-    <div className="space-y-4">
-      <h3 className="text-lg font-anton text-primary-dark dark:text-primary">Join Our Volunteer Team</h3>
-      <form className="space-y-4">
-        <Input type="text" placeholder="Name" />
-        <Input type="email" placeholder="Email" />
-        <Textarea placeholder="Why do you want to volunteer?" rows={3} />
-        <Button type="submit" className="w-full bg-secondary text-primary-dark hover:bg-secondary/90">
-          Sign Up
-        </Button>
-      </form>
-      <div>
-        <h4 className="font-anton text-primary-dark dark:text-primary">Upcoming Events</h4>
-        {/* Add a calendar component here */}
-      </div>
-      <div>
-        <h4 className="font-anton text-primary-dark dark:text-primary">Volunteer Impact</h4>
-        <p className="text-primary-dark dark:text-primary">
-          Our volunteers have helped serve over 16,500 meals to those in need!
-        </p>
-      </div>
-    </div>
-  )
-}
-
-function DonateContent() {
-  return (
-    <div className="space-y-4">
-      <h3 className="text-lg font-anton text-primary-dark dark:text-primary">Make a Difference Today</h3>
-      <div className="grid grid-cols-2 gap-4">
-        <Button variant="outline" className="border-secondary text-secondary hover:bg-secondary/10">
-          $10
-        </Button>
-        <Button variant="outline" className="border-secondary text-secondary hover:bg-secondary/10">
-          $25
-        </Button>
-        <Button variant="outline" className="border-secondary text-secondary hover:bg-secondary/10">
-          $50
-        </Button>
-        <Button variant="outline" className="border-secondary text-secondary hover:bg-secondary/10">
-          $100
-        </Button>
-      </div>
-      <Input type="number" placeholder="Custom Amount" />
-      <Button className="w-full bg-secondary text-primary-dark hover:bg-secondary/90">Donate Now</Button>
-      <div>
-        <h4 className="font-anton text-primary-dark dark:text-primary">Your Impact</h4>
-        <p className="text-primary-dark dark:text-primary">
-          Every $3.50 provides a fresh, quality meal to someone in need.
-        </p>
-      </div>
-      <div>
-        <h4 className="font-anton text-primary-dark dark:text-primary">Donor Love</h4>
-        <p className="text-primary-dark dark:text-primary">
-          &quot;Thank you for your generosity! Your support makes our work possible.&quot; - QRFF Team
-        </p>
-      </div>
-    </div>
-  )
-}
-
-function PartnerContent() {
-  return (
-    <div className="space-y-4">
-      <h3 className="text-lg font-anton text-primary-dark dark:text-primary">Partner with QRFF</h3>
-      <div>
-        <h4 className="font-anton text-primary-dark dark:text-primary">Sponsorship Levels</h4>
-        <ul className="list-disc pl-5 text-primary-dark dark:text-primary">
-          <li>Bronze: $1,000 - Logo on website</li>
-          <li>Silver: $5,000 - Logo on website and event banners</li>
-          <li>Gold: $10,000 - All Silver benefits + featured in newsletter</li>
-          <li>Platinum: $25,000 - All Gold benefits + named sponsor for major event</li>
-        </ul>
-      </div>
-      <div>
-        <h4 className="font-anton text-primary-dark dark:text-primary">Current Partners</h4>
-        <p className="text-primary-dark dark:text-primary">Tock, Hexclad, Goldhouse Ventures, Worldwide Produce</p>
-      </div>
-      <Button className="w-full bg-secondary text-primary-dark hover:bg-secondary/90">Contact Us to Partner</Button>
     </div>
   )
 }
