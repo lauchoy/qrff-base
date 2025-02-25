@@ -10,7 +10,19 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
+  /* Custom colors for QRFF */
+  --background-light-rgb: 255, 255, 255;
+  --background-dark-rgb: 23, 23, 23;
+  --background-light: #F2EEEA;
+  --background-dark: oklch(0.147 0.004 49.25);
+  --text-light: oklch(0.147 0.004 49.25);
+  --text-dark: oklch(0.985 0.001 106.423);
+  --primary-light: oklch(0.216 0.006 56.043);
+  --primary-dark: oklch(0.985 0.001 106.423);
+  --secondary-light: oklch(0.97 0.001 106.424);
+  --secondary-dark: oklch(0.268 0.007 34.298);
+
+  --background: #F2EEEA;
   --foreground: oklch(0.147 0.004 49.25);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.147 0.004 49.25);
@@ -125,5 +137,78 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Anton', serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+}
+
+@layer utilities {
+  .font-anton {
+    font-family: var(--font-anton);
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float-in {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out forwards;
+  }
+
+  .animate-float-in {
+    animation: float-in 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+
+  @keyframes slide-fade-out {
+    0% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+  }
+
+  @keyframes slide-fade-in {
+    0% {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-slide-fade-out {
+    animation: slide-fade-out 0.5s ease-out forwards;
+  }
+
+  .animate-slide-fade-in {
+    animation: slide-fade-in 0.5s ease-out forwards;
   }
 }
