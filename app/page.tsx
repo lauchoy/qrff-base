@@ -75,7 +75,7 @@ export default function Page() {
           <div className="relative z-10 h-full flex flex-col items-center justify-center text-center text-white px-4">
             <div className="w-full max-w-[800px] sm:max-w-[1000px] mx-auto mb-16 mt-32 sm:mb-12 sm:mt-4 animate-float-in px-6 sm:px-0">
               <Image
-                src="/qrff-long-color-transparent.png"
+                src="/qrff-logo-long-transparent.svg"
                 alt="QRFF Logo"
                 width={1000}
                 height={333}
@@ -85,12 +85,12 @@ export default function Page() {
               />
             </div>
             <div className="flex gap-4 sm:gap-12 justify-center mb-8 sm:mb-6 animate-float-in [animation-delay:200ms]">
-              <Link href="https://form.typeform.com/to/OLhXswUF" target="_blank">
+              <Link href="https://nvt1ahpwhbc.typeform.com/to/zp8VQpEO" target="_blank">
                 <Button size="lg" className="bg-[#F8B345] hover:bg-[#F8B345] text-black px-8 sm:px-12 py-6 sm:py-8 text-lg sm:text-xl rounded-full font-geist uppercase tracking-wide transition-all duration-300 hover:scale-105 hover:shadow-lg">
                   Request
                 </Button>
               </Link>
-              <Link href="#" target="_blank">
+              <Link href="https://www.pledge.to/quick-reaction-food-force" target="_blank">
                 <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10 bg-transparent px-8 sm:px-12 py-6 sm:py-8 text-lg sm:text-xl rounded-full font-geist uppercase tracking-wide transition-all duration-300 hover:scale-105 hover:shadow-lg">
                   Donate
                 </Button>
@@ -168,10 +168,10 @@ export default function Page() {
                   </svg>
                 </div>
                 <div className="text-[72px] font-anton text-[#F8B345] mb-3 leading-none">
-                  <Counter end={1200} />
+                  <Counter end={1500} />
                 </div>
                 <h3 className="text-xl font-anton text-white mb-3">
-                  Daily Meals
+                  Weekly Meals
                 </h3>
                 <p className="text-white/90">
                   Scaled within one week of operations
@@ -184,7 +184,7 @@ export default function Page() {
                   </svg>
                 </div>
                 <div className="text-[72px] font-anton text-[#F8B345] mb-3 leading-none">
-                  <Counter end={16500} suffix="+"/>
+                  <Counter end={20000} suffix="+"/>
                 </div>
                 <h3 className="text-xl font-anton text-white mb-3">
                   Total Meals
@@ -284,12 +284,17 @@ export default function Page() {
             <h2 className="text-5xl md:text-6xl lg:text-7xl mb-12 font-anton">
               BE A PART OF THE FRONT LINES OF FOOD
             </h2>
-            <Button
-              size="lg"
-              className="bg-[#F8B345] text-black hover:bg-[#F8B345]/90 text-2xl px-12 py-8 transform hover:scale-105 transition-all shadow-lg"
-            >
-              Donate Now <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+            <Link href="https://www.pledge.to/quick-reaction-food-force" target="_blank">
+              <Button
+                size="lg"
+                className="bg-[#F8B345] text-black hover:bg-[#F8B345]/90 text-2xl px-12 py-8 transform hover:scale-105 transition-all shadow-lg"
+              >
+                Donate Now <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+            <p className="text-sm mt-4 max-w-2xl mx-auto opacity-80">
+              Quick Reaction Food Force will allocate 15% of the donation to Affluent Hispanic Philantropies as the fiscal agent. This fee covers administrative costs, fund management, and compliance oversight to ensure the effective execution of initiatives.
+            </p>
           </div>
         </section>
 
